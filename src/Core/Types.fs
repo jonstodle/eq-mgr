@@ -79,21 +79,24 @@ type Equipment = {
     RentDurationLimit: RentDurationLimit.RentDurationLimit
 }
 
-module TodayOrLater =
-    type TodayOrLater = private TodayOrLater of DateTime
+module StartDate =
+    type StartDate = private StartDate of DateTime
     
-    let create todayOrLater =
-        if todayOrLater < DateTime.Now.Date then
-            Error("Date must be set to today or a later date")
-        else
-            Ok(TodayOrLater(todayOrLater))
+    let create (startDate: DateTime) =
+            Ok(StartDate(startDate.Date))
+            
+module EndDate =
+    type EndDate = private EndDate of DateTime
+    
+    let create (endDate: DateTime) =
+        Ok(EndDate(endDate.Date))
 
 type Reservation = {
     Id: Guid
     Reserver: User
     Equipment: Equipment
-    StartDate: TodayOrLater.TodayOrLater
-    EndDate: TodayOrLater.TodayOrLater
+    StartDate: StartDate.StartDate
+    EndDate: EndDate.EndDate
     Comment: String1000.String1000
     IsSettled: bool
 }
