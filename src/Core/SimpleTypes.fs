@@ -1,4 +1,4 @@
-namespace EqMgr
+namespace EqMgr.Common
 
 open System
 
@@ -14,6 +14,8 @@ type EndDate = private EndDate of DateTime
     
     
 module String200 =
+    let value (String200 value) = value
+    
     let create (string200: string) =
         if String.IsNullOrEmpty(string200) then
             Error("String must be at least 1 character")
@@ -23,6 +25,8 @@ module String200 =
             Ok(String200(string200))
     
 module String1000 =
+    let value (String1000 value) = value
+    
     let create (string1000: string) =
         if String.IsNullOrEmpty(string1000) then
             Error("String must be at least 1 character")
@@ -32,6 +36,8 @@ module String1000 =
             Ok(String1000(string1000))
             
 module PhoneNumber =
+    let value (PhoneNumber value) = value
+    
     let create (phoneNumber: string) =
         if phoneNumber.Length <> 8 then
             Error("Phone number must be 8 digits")
@@ -41,9 +47,16 @@ module PhoneNumber =
             Ok(PhoneNumber(phoneNumber))
 
 module StartDate =
+    let value (StartDate value) = value
+    
     let create (startDate: DateTime) =
             Ok(StartDate(startDate.Date))
             
 module EndDate =
-    let create (endDate: DateTime) =
-        Ok(EndDate(endDate.Date))
+    let value (EndDate value) = value
+    
+    let create (startDate: StartDate) (endDate: DateTime) =
+        if endDate < (startDate |> StartDate.value) then
+            Error("End date must be the same as or after start date")
+        else
+            Ok(EndDate(endDate.Date))
