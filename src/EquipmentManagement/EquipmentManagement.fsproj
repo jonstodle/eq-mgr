@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+    <RootNamespace>Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Common.SimpleTypes.fs" />
+    <Compile Include="Common.CompoundTypes.fs" />
+    <Compile Include="RegisterEquipment.PublicTypes.fs" />
+    <Compile Include="RegisterEquipment.InternalTypes.fs" />
+    <Compile Include="RegisterEquipment.Implementation.fs" />
+  </ItemGroup>
+
+</Project>
