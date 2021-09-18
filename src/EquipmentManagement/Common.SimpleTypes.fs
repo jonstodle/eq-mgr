@@ -1,9 +1,8 @@
 namespace EquipmentManagement.Common
 
 open System
-open EquipmentManagement.Common
 
-type EqipmentId = private EqipmentId of Guid
+type EquipmentId = private EquipmentId of Guid
 
 type String200 = private String200 of string
 
@@ -25,11 +24,19 @@ type EndDate = private EndDate of DateTime
 
 type UserId = private UserId of Guid
 
-module EqipmentId =
-    let value (EqipmentId value) = value
+type ReservationId = private ReservationId of Guid
+
+module EquipmentId =
+    let value (EquipmentId value) = value
     
+    let create (equipmentId: string) =
+        try
+            let parsed = Guid.Parse(equipmentId)
+            Ok(EquipmentId parsed)
+        with
+        | :? FormatException ->  Error("Reservation ID must be a valid GUID")
     
-    let create () = EqipmentId (Guid.NewGuid())
+    let generate () = EquipmentId (Guid.NewGuid())
 
 module String200 =
     let value (String200 value) = value
@@ -78,7 +85,7 @@ module RentDurationLimit =
     
     let create rentDurationLimit =
         if rentDurationLimit < 1 then
-            Error("Rent dureation limit can not be less than 1")
+            Error("Rent duration limit can not be less than 1")
         else
             Ok(RentDurationLimit(rentDurationLimit))
             
@@ -113,4 +120,16 @@ module UserId =
             let parsed = Guid.Parse(userId)
             Ok(UserId parsed)
         with
-        | :? FormatException ->  Error("User id must be a valid GUID")
+        | :? FormatException ->  Error("User ID must be a valid GUID")
+
+module ReservationId =
+    let value (ReservationId value) = value
+    
+    let create (reservationId: string) =
+        try
+            let parsed = Guid.Parse(reservationId)
+            Ok(ReservationId parsed)
+        with
+        | :? FormatException ->  Error("Reservation ID must be a valid GUID")
+    
+    let generate () = ReservationId (Guid.NewGuid())

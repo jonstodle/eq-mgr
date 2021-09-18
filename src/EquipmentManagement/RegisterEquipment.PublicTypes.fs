@@ -10,7 +10,7 @@ type UnvalidatedEquipment =
       RentDurationLimit: int }
 
 type EquipmentRegistered =
-    { Id: EqipmentId
+    { Id: EquipmentId
       Name: String200
       Details: String1000
       Rate: Rate

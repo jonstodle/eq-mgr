@@ -11,7 +11,7 @@ let failIfInvalid result =
 
 let validateEqipment: ValidateEquipment =
     fun unvalidatedEquipment ->
-        let id = EqipmentId.create ()
+        let id = EquipmentId.generate ()
 
         let name =
             String200.create unvalidatedEquipment.Name

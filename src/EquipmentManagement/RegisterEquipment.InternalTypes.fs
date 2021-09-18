@@ -4,7 +4,7 @@ open EquipmentManagement.Common
 open EquipmentManagement.RegisterEquipment
 
 type ValidatedEquipment =
-    { Id: EqipmentId
+    { Id: EquipmentId
       Name: String200
       Details: String1000
       Rate: Rate
