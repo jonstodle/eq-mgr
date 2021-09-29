@@ -13,6 +13,9 @@
     <Compile Include="RegisterEquipment.PublicTypes.fs" />
     <Compile Include="RegisterEquipment.InternalTypes.fs" />
     <Compile Include="RegisterEquipment.Implementation.fs" />
+    <Compile Include="UpdateEquipment.PublicTypes.fs" />
+    <Compile Include="UpdateEquipment.InternalTypes.fs" />
+    <Compile Include="UpdateEquipment.Implementation.fs" />
     <Compile Include="RentEquipment.PublicTypes.fs" />
     <Compile Include="RentEquipment.InternalTypes.fs" />
     <Compile Include="RentEquipment.Implementation.fs" />
